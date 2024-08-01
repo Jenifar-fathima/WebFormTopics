@@ -1,0 +1,59 @@
+LIBRARAY MANAGEMENT SYSTEM
+
+Functional requirements for library management system:
+1. Ability to add and remove books from the library
+2. Ability to search for books in the library by title, author, or ISBN
+3. Ability to check out and return books
+4. Ability to display a list of all books in the library
+5. Ability to store and retrieve information about readers, including their name and ID number
+6. Ability to track which books are currently checked out and when they are due to be returned
+7. Ability to generate reports on library usage and checkouts
+
+Entities for library management system:
+1. Book
+2. Libraray
+3. User
+4. Checkout
+
+Relationships for a Library Management System
+
+1. A Book can be added or removed from a Library.
+2. A Book can be checked out or returned by a User.
+3. A User can check out multiple Books, and multiple Users can check out each Book.
+4. A Checkout is associated with a specific Book and User and records the date when the book is due to be returned.
+5. A Library has a collection of Books.
+6. A User can check out multiple books and return multiple books.
+7. A Book can be associated with multiple checkouts.
+
+Functional Decomposition for a Library Management System
+
+1. Add/Remove Books
+	AddBook(Book book)
+	RemoveBook(string ISBN)
+ 
+2. Search Books
+	SearchBookByTitle(string title)
+	SearchBookByAuthor(string author)
+	SearchBookByISBN(string ISBN)
+ 
+3. Checkout/Return Books
+	CheckOutBook(Book book, Patron patron)
+	ReturnBook(Book book)
+ 
+4. Display Books
+	DisplayBooks()
+ 
+5. User Management
+	AddPatron(User user)
+	RemoveUser(string ID)
+	EditUser(User user)
+ 
+6. Checkout Management
+	DisplayCheckouts()
+	GetDueDate(Book book)
+ 
+7. Report generation
+	GenerateCheckoutReport()
+	GenerateUserReport()
+	GenerateBookReport()
+

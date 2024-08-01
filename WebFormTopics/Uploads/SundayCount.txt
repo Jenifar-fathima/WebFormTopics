@@ -1,0 +1,44 @@
+public class HelloWorld
+{
+    public static void Main()
+    {
+        int dayOfWeek = 1;
+        int nSundayCount = 0;
+
+        int[] lstMonthDays = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+
+        
+        //to calculate the days from 1901, we need to calculate the first day of the month of 1900
+
+        for (int i = 1900; i < 2001; i++)
+        {
+            if(i == 1900)
+            {
+                foreach (int nDays in lstMonthDays)
+                {
+                    dayOfWeek = (dayOfWeek + nDays) % 7;
+                }
+                i++;
+            }
+
+            if (i % 4 == 0 && i % 100 != 0 || i % 400 == 0)
+            {
+                lstMonthDays[1] = 29;
+            }
+            else
+            {
+                lstMonthDays[1] = 28;
+            }
+
+            foreach (int nDays in lstMonthDays)
+            {
+                if (dayOfWeek == 0)
+                {
+                    nSundayCount++;
+                }
+                dayOfWeek = (dayOfWeek + nDays) % 7;
+            }
+        }
+        Console.WriteLine("The number of Sundays in the first of the month between 1901 to 2000 is " + nSundayCount);
+    }
+}

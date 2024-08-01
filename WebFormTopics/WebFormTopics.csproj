@@ -109,6 +109,9 @@
     <Content Include="ASP TOPICS\06 - CheckBox\CheckBoxSample.aspx" />
     <Content Include="ASP TOPICS\07 - LinkButton\LinkButtonSample.aspx" />
     <Content Include="ASP TOPICS\08 - FileUpload\FileUploadSample.aspx" />
+    <Content Include="ASP TOPICS\09 - MultipleFileUpload\MultipleFileUpload.aspx" />
+    <Content Include="ASP TOPICS\10 - DownloadFile\DownloadFileExample.aspx" />
+    <Content Include="ASP TOPICS\11 - Cookie\01 - HTTPCookieCollection\HttpCookieExample.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
@@ -263,6 +266,27 @@
     </Compile>
     <Compile Include="ASP TOPICS\08 - FileUpload\FileUploadSample.aspx.designer.cs">
       <DependentUpon>FileUploadSample.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ASP TOPICS\09 - MultipleFileUpload\MultipleFileUpload.aspx.cs">
+      <DependentUpon>MultipleFileUpload.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ASP TOPICS\09 - MultipleFileUpload\MultipleFileUpload.aspx.designer.cs">
+      <DependentUpon>MultipleFileUpload.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ASP TOPICS\10 - DownloadFile\DownloadFileExample.aspx.cs">
+      <DependentUpon>DownloadFileExample.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ASP TOPICS\10 - DownloadFile\DownloadFileExample.aspx.designer.cs">
+      <DependentUpon>DownloadFileExample.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ASP TOPICS\11 - Cookie\01 - HTTPCookieCollection\HttpCookieExample.aspx.cs">
+      <DependentUpon>HttpCookieExample.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ASP TOPICS\11 - Cookie\01 - HTTPCookieCollection\HttpCookieExample.aspx.designer.cs">
+      <DependentUpon>HttpCookieExample.aspx</DependentUpon>
     </Compile>
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>

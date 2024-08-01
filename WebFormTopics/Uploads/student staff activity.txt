@@ -1,0 +1,198 @@
+namespace StudentManagement;
+internal class StaffDataBase
+{
+    #region Fields
+    private static StaffDto[] staffInfo = new StaffDto[4];
+    private static int count = 0;
+    #endregion
+
+    #region Internals
+    internal static void StaffSignup(StaffDto staffObj)
+    {
+        CheckArrayCapacity();
+        staffInfo[count++] = staffObj;
+    }
+    internal static bool StaffLogin(string email, string password)
+    {
+        bool bIsLogin = false;
+        for (int i = 0; i < count; i++)
+        {
+            if (staffInfo[i].StaffEmail == email && staffInfo[i].StaffPassword == password)
+            {
+                bIsLogin = true;
+                //StudentDetailsOption();
+            }
+        }
+        return bIsLogin; 
+    }
+
+    internal static void UpdateStaffByEmail(string email, string newEmail, string newPhoneNumber, int newAge)
+    {
+        StaffDto? staffToUpdate = FindByStaffEmail(email);
+        if (staffToUpdate != null)
+        {
+            staffToUpdate.StaffEmail = newEmail;
+            staffToUpdate.StaffPhoneNumber = newPhoneNumber;
+            staffToUpdate.StaffAge = newAge;
+        }
+    }
+
+    internal static void DeleteStaffByEmail(string email)
+    {
+        StaffDto? staffToDelete = FindByStaffEmail(email);
+        if (staffToDelete != null)
+        {
+            int index = -1;
+            for (int i = 0; i < count; i++)
+            {
+                if (staffInfo[i] == staffToDelete)
+                {
+                    index = i;
+                    break;
+                }
+            }
+
+            if (index >= 0)
+            {
+                for (int i = index; i < count - 1; i++)
+                {
+                    staffInfo[i] = staffInfo[i + 1];
+                }
+                staffInfo[--count] = default!;
+            }
+        }
+    }
+
+
+    internal static StaffDto? FindByStaffEmail(string strEmail)
+    {
+        for (int i = 0; i < count; i++)
+        {
+            if (staffInfo[i].StaffEmail == strEmail)
+            {
+                return staffInfo[i];
+            }
+        }
+        return default!;
+    }
+
+    internal static string GetAllStaff()
+    {
+        string strResult = string.Empty;
+
+        for (int i = 0; i < count; i++)
+        {
+            strResult += $"Name: {staffInfo[i].StaffName}, Email: {staffInfo[i].StaffEmail}, Staff Age: {staffInfo[i].StaffAge}, Staff Details Number: {staffInfo[i].StaffPhoneNumber}\n";
+        }
+
+        return strResult;
+    }
+    #endregion
+
+    #region Private Methods
+    private static void CheckArrayCapacity()
+    {
+        if (count == staffInfo.Length)
+        {
+            StaffDto[] newArray = new StaffDto[staffInfo.Length * 2];
+            for (int i = 0; i < count; i++)
+            {
+                newArray[i] = staffInfo[i];
+            }
+            staffInfo = newArray;
+        }
+    }
+    #endregion
+}
+namespace StudentManagement;
+internal class StudentDataBase
+{
+    #region Fields
+    private static StudentDto[] studentInfo = new StudentDto[4];
+    private static int _count = 0;
+    #endregion
+
+    #region Internals
+    internal static void AddStudentDetails(StudentDto studentObj)
+    {
+        CheckArrayCapacity();
+        studentInfo[_count++] = studentObj;
+    }
+    internal static void UpdateStudentByEmail(string email, string newEmail, string newPhoneNumber, int newAge)
+    {
+        StudentDto? studentToUpdate = FindByStudentEmail(email);
+        if (studentToUpdate != null)
+        {
+            studentToUpdate.StudentEmail = newEmail;
+            studentToUpdate.StudentPhoneNumber = newPhoneNumber;
+            studentToUpdate.StudentAge = newAge;
+        }
+    }
+
+    internal static void DeleteStudentByEmail(string email)
+    {
+        StudentDto? studentToDelete = FindByStudentEmail(email);
+        if (studentToDelete != null)
+        {
+            int index = -1;
+            for (int i = 0; i < _count; i++)
+            {
+                if (studentInfo[i] == studentToDelete)
+                {
+                    index = i;
+                    break;
+                }
+            }
+
+            if (index >= 0)
+            {
+                for (int i = index; i < _count - 1; i++)
+                {
+                    studentInfo[i] = studentInfo[i + 1];
+                }
+                studentInfo[--_count] = default!;
+            }
+        }
+    }
+
+
+    internal static StudentDto? FindByStudentEmail(string strEmail)
+    {
+        for (int i = 0; i < _count; i++)
+        {
+            if (studentInfo[i].StudentEmail == strEmail)
+            {
+                return studentInfo[i];
+            }
+        }
+        return default!;
+    }
+
+    internal static string GetAllStudent()
+    {
+        string strResult = string.Empty;
+
+        for (int i = 0; i < _count; i++)
+        {
+            strResult += $"Name: {studentInfo[i].StudentName}, Email: {studentInfo[i].StudentEmail}, Student Age: {studentInfo[i].StudentAge}, Student Details Number: {studentInfo[i].StudentPhoneNumber}\n";
+        }
+
+        return strResult;
+    }
+    #endregion
+
+    #region Private Methods
+    private static void CheckArrayCapacity()
+    {
+        if (_count == studentInfo.Length)
+        {
+            StudentDto[] newArray = new StudentDto[studentInfo.Length * 2];
+            for (int i = 0; i < _count; i++)
+            {
+                newArray[i] = studentInfo[i];
+            }
+            studentInfo = newArray;
+        }
+    }
+    #endregion
+}

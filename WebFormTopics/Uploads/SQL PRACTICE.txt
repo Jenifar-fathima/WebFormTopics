@@ -1,0 +1,228 @@
+create database LibraryManagement;				--CREATE DATABASE
+
+use LibraryManagement;			--USE THE DATABASE THAT HAVE BEEN CREATED
+
+create table BookDetails(
+	AUTHOR VARCHAR(50),
+	BOOKID INT,
+	BOOKNAME VARCHAR(50),
+	DATEOFPUBLICATION DATE
+)									--CREATE TABLE IN THE DATABASE
+
+INSERT INTO BookDetails(AUTHOR ,BOOKID ,BOOKNAME ,DATEOFPUBLICATION )values ('Jenifar',21,'Solra alavukku onnu illa','2024-02-21'),
+('Kabitha',21,'Risk laam rusk sapudra maadhiri','2024-02-23'),
+('Akshaya',21,'Edhayum thaangum idhayam','2024-01-31'),
+('Prabha',21,'Vazhka ore javvaaaaa pogudhu','2024-12-19'),
+('Parthiban',21,'Kohli yin Saridham','2024-07-04')				--INSERT THE ELEMENTS INTO THE TABLE
+
+select * from BookDetails;							--QUERY TO SELECT THE DATA FROM THE TABLE
+
+truncate table BookDetails							-- DELETE ALL ROW ELEMENTS IN THE TABLE
+
+alter table BookDetails								--MODIFY TABLE 
+drop column BOOKTITLE								--DELETE COLUMN NAME
+
+INSERT INTO BookDetails(AUTHOR ,BOOKID ,BOOKNAME ,DATEOFPUBLICATION )
+values ('ANONYMOUS1',99,'ANONYMOUS22','2024-12-20'),
+('ANONYMOUS2',29,'ANONYMOUS33','2024-12-21'),
+('ANONYMOUS3',59,'ANONYMOUS44','2024-12-22'),
+('ANONYMOUS4',96,'ANONYMOUS55','2024-12-23'),
+('ANONYMOUS5',08,'ANONYMOUS66','2024-12-24'),
+('ANONYMOUS6',33,'ANONYMOUS77','2024-12-25'),
+('ANONYMOUS7',23,'ANONYMOUS88','2024-12-26'),
+('ANONYMOUS8',55,'ANONYMOUS99','2024-12-27'),
+('ANONYMOUS9',99,'ANONYMOUS00','2024-12-28')
+
+SELECT COUNT(DISTINCT AUTHOR) FROM BookDetails		-- TO RETURN THE COUNT VALUE OF DISTINCT ELEMENT
+
+SELECT DISTINCT AUTHOR FROM BookDetails				--TO RETURN ONLY THE DISTINCT ELEMENT
+
+SELECT * FROM BookDetails 
+WHERE BOOKID = 21									--WHERE CLAUSE
+
+SELECT * FROM BookDetails 
+WHERE BOOKID >= 21
+
+SELECT * FROM BookDetails 
+WHERE BOOKID <= 21
+
+SELECT * FROM BookDetails 
+WHERE BOOKID <> 21
+
+SELECT * FROM BookDetails 
+WHERE DATEOFPUBLICATION BETWEEN '2024-12-23' AND '2024-12-27'
+
+SELECT * FROM BookDetails 
+WHERE AUTHOR LIKE 'P%'
+
+SELECT * FROM BookDetails 
+WHERE AUTHOR IN ('Prabha','Kabitha')
+
+SELECT * FROM BookDetails 
+order by BOOKID ASC		--ORDER BY ASC|DESC
+
+SELECT * FROM BookDetails 
+order by BOOKID DESC
+
+SELECT * FROM BookDetails 
+order by AUTHOR			--ORDER BY ALPHABETICALLY
+
+SELECT * FROM BookDetails 
+order by AUTHOR	DESC
+
+SELECT * FROM BookDetails 
+order by BOOKID DESC,AUTHOR	ASC
+
+SELECT * FROM BookDetails 
+WHERE BOOKID = 21 AND AUTHOR = 'Jenifar'
+
+SELECT * FROM BookDetails 
+WHERE BOOKID = 21 or AUTHOR = 'Jenifar'
+
+SELECT * FROM BookDetails 
+WHERE BOOKID = 21 AND AUTHOR = 'Jenifar' OR DATEOFPUBLICATION LIKE '%23'
+
+
+SELECT * FROM BookDetails 
+WHERE NOT BOOKID = 21 
+
+INSERT INTO BookDetails(AUTHOR ,BOOKID ,DATEOFPUBLICATION )
+values ('ANONYMOUS69',69,'2024-12-20')
+
+SELECT * FROM BookDetails 
+WHERE BOOKNAME IS NULL
+
+SELECT * FROM BookDetails 
+WHERE BOOKNAME IS NOT NULL
+
+UPDATE BookDetails
+SET AUTHOR='MR' , BOOKID=3
+WHERE AUTHOR = 'ANONYMOUS7'				--UPDATE TABLE
+
+SELECT * FROM BookDetails
+
+DELETE FROM BookDetails 
+WHERE AUTHOR='ANONYMOUS6'       -- TO DELETE THE PARTICULAR ROW
+
+
+SELECT TOP 3 * FROM BookDetails 
+WHERE BOOKID = 21 
+
+SELECT TOP 75 PERCENT * FROM BookDetails
+
+SELECT TOP 3 * FROM BookDetails 
+WHERE BOOKID = 21
+ORDER BY AUTHOR DESC
+
+--MIN() - returns the smallest value within the selected column
+--MAX() - returns the largest value within the selected column
+--COUNT() - returns the number of rows in a set
+--SUM() - returns the total sum of a numerical column
+--AVG() - returns the average value of a numerical column
+
+INSERT INTO BookDetails(AUTHOR ,BOOKID ,BOOKNAME ,DATEOFPUBLICATION )
+values ('ANONYMOUS100',100,'ANONYMOUS220','2024-12-10'),
+('ANONYMOUS101',101,'ANONYMOUS221','2024-12-11'),
+('ANONYMOUS102',102,'ANONYMOUS222','2024-12-12'),
+('ANONYMOUS103',111,'ANONYMOUS223','2024-12-13')
+
+SELECT MAX(BOOKID) AS MAXIMUMVALUE
+FROM BookDetails
+
+SELECT MIN(BOOKID) AS MINIMUMVALUE
+FROM BookDetails
+
+SELECT MIN(BOOKID) AS MINIMUMVALUE,AUTHOR
+FROM BookDetails
+GROUP BY AUTHOR;
+
+SELECT COUNT(BOOKID) FROM BookDetails
+WHERE BOOKID=21
+
+SELECT SUM(BOOKID) FROM BookDetails
+
+SELECT AVG(BOOKID) FROM BookDetails
+
+SELECT COUNT(DISTINCT BOOKID) AS [NUMBER OF DISTINCT BOOK ID]
+FROM BookDetails
+
+SELECT AVG(BOOKID) AS Average,AUTHOR
+FROM BookDetails
+GROUP BY AUTHOR
+
+SELECT * FROM BookDetails
+WHERE AUTHOR LIKE 'P_r%'
+
+
+SELECT * FROM BookDetails
+WHERE AUTHOR LIKE '[j-p]%'
+
+SELECT * FROM BookDetails
+WHERE BOOKID IN (21,99) 
+
+SELECT AUTHOR,AUTHOR+','+','+BOOKNAME AS BOOKDETAILS  --Concatenation
+from BookDetails
+WHERE BOOKID NOT IN (21,99) 
+
+
+--SQL JOIN
+
+CREATE TABLE BookMarket(
+	PRIZE INT,
+	PURCHASECOUNT INT,
+	BOOKID INT,
+	REVIEW VARCHAR(100)
+	PRIMARY KEY(BOOKID)
+	)
+
+CREATE TABLE BookPublish(
+	AUTHOR VARCHAR(100),
+	BOOKNAME VARCHAR(100),
+	BOOKID INT,
+	FOREIGN KEY(BOOKID) REFERENCES BookMarket(BOOKID)
+	)
+
+INSERT INTO BookMarket(PRIZE,PURCHASECOUNT,BOOKID,REVIEW)
+VALUES
+(342,4,1,'good'),
+(822,13,2,'very good'),
+(112,5,3,'not good'),
+(732,10,4,'very good'),
+(152,1,5,'not good'),
+(162,7,6,'good'),
+(112,1,7,'not good'),
+(322,8,8,'very good'),
+(102,2,9,'not good'),
+(562,3,10,'good')
+
+insert into BookPublish(AUTHOR ,BOOKNAME ,BOOKID)
+values
+('Abu','Life so beautiful',4),
+('Nalini','Worst is delight for success',2),
+('Latha','Meaningful time',10),
+('Watson','Love your pain',3),
+('Kavitha','One and only',7),
+('Cristiano','Be a miracle',9),
+('Tamilarasan','Yet another life',5),
+('Ayesha','Wings',8)
+
+SELECT * FROM BookMarket
+INNER JOIN BookPublish ON BookMarket.BOOKID = BookPublish.BOOKID  --INNER JOIN
+
+SELECT * FROM BookMarket
+LEFT JOIN BookPublish ON BookMarket.BOOKID = BookPublish.BOOKID
+
+SELECT * FROM BookMarket
+RIGHT JOIN BookPublish ON BookMarket.BOOKID = BookPublish.BOOKID
+
+SELECT BookPublish.BOOKNAME,BookPublish.AUTHOR,BookMarket.REVIEW
+FROM BookMarket
+JOIN BookPublish ON BookMarket.BOOKID = BookPublish.BOOKID
+
+SELECT * FROM BookMarket
+FULL JOIN BookPublish ON BookMarket.BOOKID = BookPublish.BOOKID
+
+SELECT BOOKID FROM BookMarket
+UNION
+SELECT BOOKID FROM BookDetails   --to remove duplicates
+
