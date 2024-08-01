@@ -1,0 +1,9 @@
+https://dev.to/karenpayneoregon/gentle-introduction-to-generic-repository-pattern-with-c-1jn0
+
+https://dotnettutorials.net/lesson/repository-design-pattern-csharp/
+
+https://dotnettutorials.net/lesson/generic-repository-pattern-csharp-mvc/
+
+https://dotnettutorials.net/lesson/repository-pattern-implementation-guidelines-csharp/
+
+https://dotnettutorials.net/lesson/unit-of-work-csharp-mvc/
