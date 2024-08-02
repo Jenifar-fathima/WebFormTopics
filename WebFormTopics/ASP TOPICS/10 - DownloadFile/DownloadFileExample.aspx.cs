@@ -25,7 +25,7 @@ namespace WebFormTopics.ASP_TOPICS._10___DownloadFile
             {
                 Response.Clear();
                 Response.AddHeader("Content-Disposition", "attachment; filename=" + fileInfo.Name);
-                Response.ContentType = "application/pdf";
+                Response.ContentType = "text/plain";
                 Response.TransmitFile(fileToDownload);
                 Response.End();
             }
