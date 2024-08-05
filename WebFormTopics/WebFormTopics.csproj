@@ -119,6 +119,7 @@
     <Content Include="ASP TOPICS\15 - DataList\DataListExample.aspx" />
     <Content Include="ASP TOPICS\16 - DataGrid\DataGridExample.aspx" />
     <Content Include="ASP TOPICS\17 - RegistrationForm\RegistrationFormExample.aspx" />
+    <Content Include="ASP TOPICS\18 - EventHandling\EventHandlingExample.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
@@ -343,6 +344,13 @@
     </Compile>
     <Compile Include="ASP TOPICS\17 - RegistrationForm\RegistrationFormExample.aspx.designer.cs">
       <DependentUpon>RegistrationFormExample.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ASP TOPICS\18 - EventHandling\EventHandlingExample.aspx.cs">
+      <DependentUpon>EventHandlingExample.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ASP TOPICS\18 - EventHandling\EventHandlingExample.aspx.designer.cs">
+      <DependentUpon>EventHandlingExample.aspx</DependentUpon>
     </Compile>
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
